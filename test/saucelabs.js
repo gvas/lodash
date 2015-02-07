@@ -343,6 +343,7 @@ function onGenericRestart() {
  * @param {Object} [error] The error object.
  */
 function onGenericStop(error) {
+  console.log('onGenericStop');
   this.running = this.stopping = false;
   this.emit('stop', error);
 }
