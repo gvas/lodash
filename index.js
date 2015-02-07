@@ -103,6 +103,7 @@ SauceTunnel.prototype.killTunnel = function(callback) {
 
   console.log("SauceTunnel 5");
   this.emit('verbose:debug', 'Trying to kill tunnel');
+  console.log("SauceTunnel 5.1," + this.baseUrl + "/tunnels/" + this.id);
   request({
     method: "DELETE",
     url: this.baseUrl + "/tunnels/" + this.id,
