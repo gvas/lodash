@@ -110,7 +110,7 @@ SauceTunnel.prototype.killTunnel = function(callback) {
     json: true
   }, function (err, resp, body) {
     console.log("Sauce Tunnel 5.2");
-    console.log("SauceTunnel 6," + err + "," + JSON.stringify(resp));
+    console.log("SauceTunnel 6," + err + "," + resp);
     if (!err && resp.statusCode === 200) {
       this.emit('verbose:debug', 'Tunnel Closed');
     }
