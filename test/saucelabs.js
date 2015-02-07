@@ -865,25 +865,34 @@ Tunnel.prototype.stop = function(callback) {
 
   logInline();
   console.log('Shutting down Sauce Connect tunnel...');
+  console.log('tunnel.id: ' + this.connection.id);
+  console.log('tunnel.proc: ' + this.connection.proc);
 
   var jobs = this.jobs,
       active = jobs.active;
 
   var stop = _.after(active.length, _.bind(function() {
+    console.log('1');
     var onStop = _.bind(onGenericStop, this);
     if (this.running) {
+      console.log('2');
       this.connection.stop(onStop);
     } else {
+      console.log('3');
       onStop();
     }
   }, this));
 
   jobs.queue.length = 0;
+  console.log('4');
   if (_.isEmpty(active)) {
+    console.log('5');
     _.defer(stop);
   }
   _.invoke(active, 'stop', function() {
+    console.log('6');
     _.pull(active, this);
+    console.log('7');
     stop();
   });
 
