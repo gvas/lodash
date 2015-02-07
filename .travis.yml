@@ -4,27 +4,10 @@ node_js:
 env:
   global:
     - BIN="node" BUILD="compat" ISTANBUL=false NODE_BIN=$BIN OPTION=""
-    - IOJS_VERSION="v1.1.0" NPM_VERSION="^2.0.0" SAUCE_LABS=false SAUCE_USERNAME="lodash"
-    - secure: "tg1JFsIFnxzLaTboFPOnm+aJCuMm5+JdhLlESlqg9x3fwro++7KCnwHKLNovhchaPe4otC43ZMB/nfWhDnDm11dKbm/V6HlTkED+dadTsaLxVDg6J+7yK41QhokBPJOxLV78iDaNaAQVYEirAgZ0yn8kFubxmNKV+bpCGQNc9yU="
-  matrix:
-    - BUILD="compat"
-    - BUILD="modern"
-    - BUILD="modern"
-    - BUILD="modern" ISTANBUL=true
-    - BIN="iojs" BUILD="compat" NODE_BIN=$BIN 
-    - BIN="iojs" BUILD="modern" NODE_BIN=$BIN 
-    - BIN="phantomjs"
-    - BIN="rhino"
-    - BIN="rhino" OPTION="-require"
-    - BIN="ringo"
+    - IOJS_VERSION="v1.1.0" NPM_VERSION="^2.0.0" SAUCE_LABS=false SAUCE_USERNAME="gvas"
+    - secure: "JhBnLRwXsW3j9YJk6VqKqulnPMZNMzYnVr2SqfKQYB4XqnBsqMGA0ZlcZ7su/FMJWpZP8NWzttzyMstnhFmCdNvrvjtXJ9V3hTkq5JWtj8u96NLixW9iz2nOeoUqgaI2VmTBpDqKlOR4+zwve+CkRHa2D8QwJzoAfAbdCgB/wn4="
 matrix:
   include:
-    - node_js: "0.8"
-      env: NPM_VERSION="~1.4.0"
-    - node_js: "0.8"
-      env: BUILD="modern" NPM_VERSION="~1.4.0"
-    - node_js: "0.10"
-      env: SAUCE_LABS=true
     - node_js: "0.10"
       env: SAUCE_LABS=true BUILD="modern"
 git:
