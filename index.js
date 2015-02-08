@@ -56,6 +56,7 @@ SauceTunnel.prototype.openTunnel = function(callback) {
   callback.called = false;
 
   this.proc.stdout.pipe(split()).on('data', function(data) {
+    console.log("stdout: " + data);
     if (!data.match(/^\[-u,/g)) {
       me.emit('verbose:debug', data);
     }
@@ -72,7 +73,8 @@ SauceTunnel.prototype.openTunnel = function(callback) {
     }
   });
 
-  this.proc.stderr.pipe(split()).on('data', function(data) {
+  this.proc.stderr.pipe(split()).on('data', function (data) {
+    console.log("stderr: " + data);
     me.emit('log:error', data);
   });
 
@@ -103,7 +105,6 @@ SauceTunnel.prototype.killTunnel = function(callback) {
 
   console.log("SauceTunnel 5");
   this.emit('verbose:debug', 'Trying to kill tunnel');
-  console.log("SauceTunnel 5.1," + this.baseUrl + "/tunnels/" + this.id);
   request({
     method: "DELETE",
     url: this.baseUrl + "/tunnels/" + this.id,
