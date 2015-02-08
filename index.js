@@ -73,9 +73,9 @@ SauceTunnel.prototype.openTunnel = function(callback) {
     }
   });
 
-  this.proc.stderr.pipe(split()).on('data', function (data) {
+  this.proc.stderr.on('data', function (data) {
     console.log("stderr: " + data);
-    me.emit('log:error', data);
+    me.emit('log:error', data.toString().replace(/[\n\r]/g, ''));
   });
 
   var self = this;
